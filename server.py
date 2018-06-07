@@ -1,7 +1,7 @@
 import re
 from flask import Flask, session, request, redirect, render_template, flash, url_for
+from db.data_layer import get_user_by_id, get_user_by_name, get_user_by_name, create_user, get_all_quotes, get_all_quotes_for, get_quote, search_by_user_or_email, create_quote, delete_quote
 
-import db.data_layer as db
 '''
 USAGE:        db.<function_name>
 EXAMPLES:     db.search_by_user_or_email('Smith')
