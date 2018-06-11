@@ -1,5 +1,45 @@
-{% extends 'base.html' %} 
-
-{% block body %}  
-
+{% extends 'base.html' %} {% block body %}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-lg-8 offset-2">
+            {% if session.name %}
+                <form action="{{ url_for('write_quote')}}" method="POST">
+                    <div class="card">
+                        <h5 class="card-header">Write new quote</h5>
+                        <div class="card-body">
+                            <input type="text" class="form-control is-valid" placeholder="What's on your mind?" name="html_content">
+                            <div class="valid-feedback">
+                                Enter to submit
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <hr> 
+                {% for quote in all_quotes %}
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <blockquote class="blockquote mb-0">
+                            <p class="card-text">{{quote.content}}</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <footer class="blockquote-footer">
+                                        {% if session.user_id == quote.user_id %}
+                                        <a href="{{url_for('user_quotes', user_id=session.user_id)}}">{{quote.user.name}}</a>
+                                        {% else %} {{quote.user.name}} {% endif %}
+                                    </footer>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="card-text text-right">
+                                        <small class="text-muted">{{quote.created_at}}</small>
+                                    </p>
+                                </div>
+                            </div>
+                        </blockquote>
+                    </div>
+                </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>
 {% endblock %}
