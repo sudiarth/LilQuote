@@ -1,0 +1,33 @@
+{% extends 'base.html' %} {% block body %}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-lg-4 offset-4">
+            <div class="card">
+                <h5 class="card-header">Register</h5>
+                <div class="card-body">
+                    <form action="{{ url_for('register') }}" method="POST">
+                        <div class="form-group">
+                            <label for="exampleInputFirstName">Full Name</label>
+                            <input type="text" class="form-control" id="exampleInputFirstName" name="html_fullname" placeholder="Enter name">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" name="html_email" aria-describedby="emailHelp" placeholder="Enter email">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" name="html_password" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Confirm Password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" name="html_confirm" placeholder="Confirm Password">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Register</button>
+                        {% include 'errors.html' %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

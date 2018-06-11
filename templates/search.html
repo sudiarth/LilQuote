@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block body %}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-lg-8 offset-2">
+            {% for result in results %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p class="card-text">{{result.name}}</p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <footer class="blockquote-footer">
+                                    <a href="{{url_for('user_quotes', user_id=session.user_id)}}">{{result.email}}</a>
+                                </footer>
+                            </div>
+                        </div>
+                    </blockquote>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

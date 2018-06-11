@@ -1,0 +1,20 @@
+{% extends 'base.html' %} {% block body %}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-lg-6 offset-3">
+            <div class="card">
+                <h5 class="card-header">Write new quote</h5>
+                <div class="card-body">
+                    <form action="{{ url_for('write_quote')}}" method="POST">
+                        <div class="form-group">
+                            <textarea class="form-control" id="textInputQuote" name="html_content" placeholder="Write quote"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        {% include 'errors.html' %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
